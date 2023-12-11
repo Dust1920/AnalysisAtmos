@@ -1,6 +1,6 @@
 load("Pars.mat");
 
-Ns=5000;
+Ns=50;
 %Caso Estocástico.
 
 LFC=LfC();
@@ -49,11 +49,35 @@ save('TIMES','Times');
 Tmid=mean(Tvec)*DeltaT*Ts;
 
 
+PLOT=zeros(9,length(Z));
 
-hold on
-plot(WS(1,:)*Vs,ZS(1,:)*Ls)
-plot(WS(20,:)*Vs,ZS(1,:)*Ls)
-plot(WS(80,:)*Vs,ZS(1,:)*Ls)
-plot(WS(1999,:)*Vs,ZS(1,:)*Ls)
-plot(WS(3000,:)*Vs,ZS(1,:)*Ls)
-hold off
+for i=1:length(Z)
+   PLOT(:,i)=Bou(Z(i),Par); 
+end
+
+% hold on
+% plot(PLOT(5,:)*Ths,Z*Ls) %Thetav_env
+% plot(PLOT(8,:)*Ths,Z*Ls) %Thetav_parcel
+% plot(PLOT(4,:)*Ths,Z*Ls) %Thetae_env
+% xline(Te*Ths)            %Thetae0
+% title("Temperaturas Potenciales")
+% ylabel("Z (Km)")
+% xlabel("Temperatura (K)")
+% hold off
+% 
+
+ hold on
+ plot(PLOT(1,:)*Vs/(Ts*60),Z*Ls,'r')
+%  xline(0,':')
+%  yline(2,':b')
+%  yline(3,':b')
+ hold off
+
+
+% hold on
+% plot(WS(1,:)*Vs,ZS(1,:)*Ls)
+% plot(WS(20,:)*Vs,ZS(1,:)*Ls)
+% plot(WS(80,:)*Vs,ZS(1,:)*Ls)
+% plot(WS(1999,:)*Vs,ZS(1,:)*Ls)
+% plot(WS(3000,:)*Vs,ZS(1,:)*Ls)
+% hold off

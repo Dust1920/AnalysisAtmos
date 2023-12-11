@@ -46,7 +46,7 @@ Vs=(Ls*1000)/(Ts*60);
         
         Z=Z0:dZ:ZF;
         W=W0:dV:WF;
-            T=0:DeltaT:Tf;
+        T=0:DeltaT:Tf;
           
    
    
@@ -80,7 +80,9 @@ Vs=(Ls*1000)/(Ts*60);
  Qv=FQv(z0,qv0);
  Te=p+LCP*Qv;
  Qt=Qv;
-
+ z0
+ p
+ Qt
  %Bouyancy
  g=9.81; %m/s^2
  g=g*60*Ts/Vs;
@@ -92,9 +94,10 @@ Vs=(Ls*1000)/(Ts*60);
  Par(4)=qvs0;
  Par(5)=LCP;
  Par(6)=epsilon;
- Par(7)=Qv;
+ Par(7)=-1000;
  Par(8)=Te;
  Par(9)=Qt;
  Par(10)=g;
+ 
  
  save Pars.mat
